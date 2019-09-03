@@ -16,12 +16,25 @@
 
     .sidebar-container {
         overflow: auto;
+        padding-left:  15px;
+
+        &:after {
+            background: $color-gray-border;
+            background: linear-gradient(to bottom, $color-gray-border 20%, $color-gray-border 78%, $color-white 100%);
+            position: absolute;
+            content: "";
+            width: 2.5px;
+            height: 400px;
+            top: 30px;
+            right: -1px;
+            bottom: 0;
+        }
     }
     // Author information
     .sidebar-profile {
         color:         map-get($sidebar, color);
         text-align:    center;
-        padding-top:   18px;
+        padding-top:   15px;
         margin-bottom: 15px;
 
         .sidebar-profile-picture {
@@ -33,6 +46,25 @@
             color:     map-get($sidebar, color);
         }
     }
+
+    .sidebar-heading {
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+    .sidebar-heading a {
+        color: #000;
+        text-decoration: none;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+    }
+    .sidebar-heading a:hover {
+        border-bottom: dotted 1px #ef5285;
+        color: #000;
+        text-decoration: none;
+    }
+
     // Sidebar's buttons
     ul.sidebar-buttons {
         padding: 0;
@@ -42,8 +74,8 @@
             display:     block;
             width:       100%;
             // Height of a link in the menu
-            height:      45px;
-            line-height: 45px;
+            height:      35px;
+            line-height: 35px;
 
             .sidebar-button-link {
                 color:   map-get($sidebar, color);
@@ -66,7 +98,7 @@
 // Define sidebar behavior configured in `_config.yml` for small screen
 // On `$small-and-down` (small screen): It hide by default the sidebar
 // and with javascript located in `source/_js/_sidebar.js`, it will animate the swipe of the sidebar
-@media #{$small-and-down} {
+@media #{$medium-and-down} {
     #sidebar {
         &[data-behavior="1"],
         &[data-behavior="2"],
@@ -76,26 +108,6 @@
             @include sidebar-lg;
         }
         &[data-behavior="3"],
-        &[data-behavior="6"] {
-            left: -#{map-get($sidebar, md-screen-width)};
-            @include sidebar-md;
-        }
-    }
-}
-
-// Define sidebar behavior configured in `_config.yml` for medium screen
-@media #{$medium-only} {
-    #sidebar {
-        &[data-behavior="1"],
-        &[data-behavior="2"],
-        &[data-behavior="3"] {
-            @include sidebar-md;
-        }
-        &[data-behavior="4"],
-        &[data-behavior="5"] {
-            left: -#{map-get($sidebar, lg-screen-width)};
-            @include sidebar-lg;
-        }
         &[data-behavior="6"] {
             left: -#{map-get($sidebar, md-screen-width)};
             @include sidebar-md;
@@ -172,4 +184,11 @@
     #sidebar {
         display: none;
     }
+}
+
+.sidebar-buttons span:before {
+  font-family: 'FontAwesome';
+  content: '\f105';
+  margin: 0 5px 0 -15px;
+  color: black;
 }

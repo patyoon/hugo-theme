@@ -92,7 +92,7 @@
     }
 }
 
-@media #{$medium-and-up} {
+@media #{$large-and-up} {
     #header {
         // Hide header
         &[data-behavior="1"],

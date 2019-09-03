@@ -139,9 +139,8 @@ $about: (
 // Header
 $header:(
     'height':     55px,
-    'background': #fff,
-    'color':      #88909a,
-    'border':     1px solid #eef2f8
+    'background': #f7f7f7,
+    'color':      #88909a
 );
 
 // Sidebar
@@ -150,13 +149,13 @@ $sidebar: (
     'lg-screen-width':  250px,
     'xlg-screen-width': 500px,
     'background':       rgba(17, 26, 35, 0),
-    'color':            #ebebeb
+    'color':            black
 );
 
 // Main
 $main: (
     'padding-top':      15px,
-    'background-color': #fff
+    'background-color': #f7f7f7
 );
 
 // Components settings
@@ -217,7 +216,7 @@ $image-gallery-photos-margin: 2px;
 // Main content
 $main-content: (
     'max-width':          750px,
-    'padding-right-left': 20px,
+    'padding-right-left': 50px,
 );
 $main-width: map-get($main-content, max-width) + map-get($main-content, padding-right-left) * 2;
 
@@ -255,3 +254,8 @@ $tooltip: (
     // Don't change this value, used to vertically center the tooltip content
     'arrow-height': 12px
 );
+
+$color-base: #222;
+$color-white: lighten($color-base, 100%);
+$color-gray: lighten($color-base, 40%);
+$color-gray-border: lighten($color-base, 77%);
