@@ -15,7 +15,7 @@
       {{ partial "menu.html" (dict "menu" .Site.Menus.main "root" $) }}
     </ul>
     <ul class="sidebar-buttons">
-      {{ partial "menu.html" (dict "menu" .Site.Menus.links "root" $) }}
+      {{ partial "link.html" (dict "menu" .Site.Menus.links "root" $) }}
     </ul>
     <ul class="sidebar-buttons">
       {{ partial "menu.html" (dict "menu" .Site.Menus.misc "root" $) }}

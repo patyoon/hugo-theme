@@ -45,6 +45,32 @@
     &.pushed {
         margin-left: #{map-get($sidebar, md-screen-width)};
     }
+    p.social-links {
+        margin-top: 35px;
+        .sidebar-button-link {
+            margin: 0 10px 10px 0;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            line-height: 40px;
+            font-size: 15px;
+            text-align: center;
+            vertical-align: bottom;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            border: solid 1.1px lighten(map-get($sidebar, color), 10);
+
+            .sidebar-button-icon {
+                vertical-align: bottom;
+                line-height: 40px;
+            }
+            .sidebar-button-desc {
+                display: none;
+            }
+        }
+    }
 }
 
 /// Mixin helper to display the sidebar in large size
@@ -103,6 +129,32 @@
             }
         }
     }
+
+    p.social-links {
+        margin-top: 35px;
+        .sidebar-button-link {
+            margin: 0 10px 10px 0;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            border: solid 1.1px lighten(map-get($sidebar, color), 10);
+            line-height: 40px;
+            font-size: 15px;
+            text-align: center;
+            vertical-align: bottom;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            .sidebar-button-icon {
+                vertical-align: bottom;
+                line-height: 40px;
+            }
+            .sidebar-button-desc {
+                display: none;
+            }
+        }
+    }
     // Used to animate the sidebar (pushed effect)
     @include prefix(transition, 'margin-left 0.5s', 'webkit' 'moz');
     &.pushed {
@@ -141,7 +193,7 @@
         .sidebar-profile-location {
             font-weight: 400;
             font-size:   1.6rem;
-            color:       map-get($sidebar, color);
+            color:       lighten(map-get($sidebar, color), 10);
         }
         .sidebar-profile-job,
         .sidebar-profile-location {
@@ -192,6 +244,32 @@
             }
             &:nth-child(odd) {
                 padding-right: 20px;
+            }
+        }
+    }
+    p.social-links {
+        margin-top: 35px;
+        .sidebar-button-link {
+            margin: 0 10px 10px 0;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            line-height: 40px;
+            font-size: 15px;
+            text-align: center;
+            vertical-align: bottom;
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            border: solid 1.1px lighten(map-get($sidebar, color), 10);
+
+            .sidebar-button-icon {
+                vertical-align: bottom;
+                line-height: 40px;
+            }
+            .sidebar-button-desc {
+                display: none;
             }
         }
     }

@@ -93,6 +93,20 @@
             margin-top: 5px;
         }
     }
+
+    p.social-links {
+        .sidebar-button-link {
+            color:   lighten(map-get($sidebar, color), 10);
+            display: block;
+            height:  100%;
+
+            &:hover,
+            &:active {
+                text-decoration: none;
+                color:           lighten(map-get($sidebar, color), 40);
+            }
+        }
+    }
 }
 
 // Define sidebar behavior configured in `_config.yml` for small screen
