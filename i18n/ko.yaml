@@ -1,0 +1,166 @@
+## GLOBAL ##
+- id: "global.home"
+  translation: "홈"
+
+- id: "global.categories"
+  translation: "카테고리"
+
+- id: "global.category"
+  translation: "카테고리"
+
+- id: "global.tags"
+  translation: "태그"
+
+- id: "global.tag"
+  translation: "태그"
+
+- id: "global.archives"
+  translation: "지난글들"
+
+- id: "global.search"
+  translation: "검색"
+
+- id: "global.about"
+  translation: "소개"
+
+- id: "global.author_picture"
+  translation: "저자 사진"
+
+- id: "global.share_on"
+  translation: "공유하기"
+
+- id: "global.mail"
+  translation: "이메일"
+
+- id: "global.rss"
+  translation: "RSS"
+
+- id: "global.search_category"
+  translation: "카테고리 검색"
+
+- id: "global.search_tag"
+  translation: "태그 검색"
+
+- id: "global.search_date"
+  translation: "날짜 (YYYY/MM/DD)"
+
+## GLOBAL.POST_FOUND ##
+- id: "global.post_found.zero"
+  translation: "검색 결과 없음"
+
+- id: "global.post_found.one"
+  translation: "1개의 검색 결과"
+
+- id: "global.post_found.other"
+  translation: "{n}개의 검색 결과"
+
+## GLOBAL.CATEGORIES_FOUND ##
+- id: "global.categories_found.zero"
+  translation: "카테고리 검색 결과 없음"
+
+- id: "global.categories_found.one"
+  translation: "1개의 카테고리 검색 결과"
+
+- id: "global.categories_found.other"
+  translation: "{n}개의 카테고리 검색 결과"
+
+## GLOBAL.TAGS_FOUND ##
+- id: "globa.tags_found.zero"
+  translation: "태그 검색 결과 없음"
+
+- id: "globa.tags_found.one"
+  translation: "1개의 태그 검색 결과"
+
+- id: "globa.tags_found.other"
+  translation: "{n}개의 태그 검색 결과"
+
+## PAGINATION ##
+- id: "pagination.page"
+  translation: "page {{ .Paginator.PageNumber }}"
+
+- id: "pagination.of"
+  translation: "of {{ .Paginator.TotalPages }}"
+
+- id: "pagination.newer_posts"
+  translation: "새로운 글"
+
+- id: "pagination.older_posts"
+  translation: "예전 글"
+
+- id: "pagination.previous"
+  translation: "이전"
+
+- id: "pagination.next"
+  translation: "다음"
+
+## POST ##
+- id: "post.no_title"
+  translation: "제목없음"
+
+- id: "post.categorized_in"
+  translation: "카테고리"
+
+- id: "post.tagged_in"
+  translation: "태그"
+
+- id: "post.toc"
+  translation: "이용약관"
+
+- id: "post.read_more"
+  translation: "더 읽기"
+
+- id: "post.go_to_website"
+  translation: "웹사이트 가기"
+
+- id: "post.comment_and_share"
+  translation: "댓글 달고 쉐어하기"
+
+## FOOTER ##
+- id: "footer.all_rights_reserved"
+  translation: "All Rights Reserved"
+
+## DATE ##
+- id: "date.year.suffix"
+  translation: "년"
+
+- id: "date.month.suffix"
+  translation: "월"
+
+- id: "date.day.suffix"
+  translation: "일"
+
+- id: "date.month.january"
+  translation: "1"
+
+- id: "date.month.february"
+  translation: "2"
+
+- id: "date.month.march"
+  translation: "3"
+
+- id: "date.month.april"
+  translation: "4"
+
+- id: "date.month.may"
+  translation: "5"
+
+- id: "date.month.june"
+  translation: "6"
+
+- id: "date.month.july"
+  translation: "7"
+
+- id: "date.month.august"
+  translation: "8"
+
+- id: "date.month.september"
+  translation: "9"
+
+- id: "date.month.october"
+  translation: "10"
+
+- id: "date.month.november"
+  translation: "11"
+
+- id: "date.month.december"
+  translation: "12"
