@@ -25,7 +25,7 @@
 	    {{ range $index, $element := .AllTranslations }}
         {{ $len := (len .AllTranslations) }}
 	    <a class="link {{if eq $element.Lang $.Lang}}disabled{{ end }}" href="{{ $element.Permalink }}">{{ $element.Language.LanguageName }}</a>
-        {{if ne $index (sub $len 1) }} <i class="fa fa-solid fa-globe"></i> {{end}}
+        {{if ne $index (sub $len 1) }}&nbsp;{{end}}
 	  {{ end }}
       </span>
 	</nav>
