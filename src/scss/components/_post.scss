@@ -75,6 +75,7 @@
         .post-header {
             .post-title {
                 font-size: map-get($headings-font-size, h1) + 0.9rem;
+                margin-top: 20px;
             }
         }
     }

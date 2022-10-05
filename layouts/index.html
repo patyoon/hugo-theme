@@ -9,12 +9,20 @@
                {{ if eq .Params.covermeta "out" }}hasCoverMetaOut{{ else }}hasCoverMetaIn{{ end }}
            {{ with .Params.coverCaption }}hasCoverCaption{{ end }}">
         <article class="post" itemscope itemType="http://schema.org/BlogPosting">
-          <div class="post-content markdown" itemprop="articleBody">
+          <div class="post-header main-content-wrap {{ if $.Params.metaalignment }}text-{{ $.Params.metaalignment }}{{ else }}text-left{{ end }}">
+            <h1 class="post-title" itemprop="headline">
+              {{ .Params.h1 }}
+            </h1>
+          </div>
+          <div class="post-content markdown" style="">
             <div class="main-content-wrap">
               {{ .Content | safeHTML }}
+              <div class="newslettter">
+                {{ partial "newsletter.html" . }}
+              </div>
             </div>
           </div>
-        </section>
+        </article>
         {{ partial "footer.html" . }}
       </div>
     </div>
