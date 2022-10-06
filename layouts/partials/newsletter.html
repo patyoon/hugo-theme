@@ -10,8 +10,13 @@
   <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
   <div id="wrap">
     <div class="field"></div>
-    <form class="signup">
-      <input class="email" placeholder="email" type="email">/</input>
+    <form class="signup" method="POST"   data-netlify="true" netlify-honeypot="bot-field">
+      <input class="valid email" placeholder="email" type="email">/</input>
+      <input
+        class="d-none"
+        name="bot-field"
+        placeholder="This is a spam detector, don't fill this out if you're a human."
+      />
       <div class="btnwrap">
         <div class="spark"></div>
         <div class="spark"></div>
