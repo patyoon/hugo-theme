@@ -1,0 +1,34 @@
+{{ partial "head.html" . }}
+<body>
+  <div id="blog">
+    {{ partial "header.html" . }}
+    {{ partial "sidebar.html" . }}
+    {{ partial "post/header-cover.html" . }}
+    <div id="main" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}"
+         class="{{ with .Params.coverimage }}hasCover{{ end }}
+             {{ if eq .Params.covermeta "out" }}hasCoverMetaOut{{ else }}hasCoverMetaIn{{ end }}
+         {{ with .Params.coverCaption }}hasCoverCaption{{ end }}">
+      <section class="main-content-wrap">
+        <form id="search" onsubmit="google_search(); return false;">
+          <div class="form-group form-group-lg">
+            <input
+              type="text"
+              class="form-control"
+              id="google-search"
+              placeholder="Enter search term and hit enter"
+            />
+          </div>
+        </form>
+      </section>
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
+  <noscript>
+    Search
+    <a href="https://www.google.com/search?q=site:{{ .Site.BaseURL | absLangURL }}" target="_blank"
+    >Google</a
+           >
+    for:
+    <pre><code>search-term site: {{ .Site.BaseURL | absLangURL }} </code></pre>
+  </noscript>
+  {{ partial "foot.html" . }}
