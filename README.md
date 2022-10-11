@@ -1,19 +1,6 @@
-# Tranquilpeak
+# Hugo Theme of https://www.patyoon.com
 
 My fork of https://github.com/kakawait/hugo-tranquilpeak-theme
-
-
-## Dev Commands
-
-```
-npm run prod
-```
-
-## User Commands
-
-
-
-to recompile prod,
 
 ## Troubleshooting
 
