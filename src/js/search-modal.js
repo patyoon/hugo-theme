@@ -113,19 +113,12 @@
     showResults: function(posts) {
       var html = '';
       posts.forEach(function(post) {
+        if (post.kind && post.kind !== 'page') {
+          return;
+        }
         var lang = window.navigator.userLanguage || window.navigator.language || post.lang;
 
         html += '<div class="media">';
-        if (post.thumbnailImageUrl) {
-          html += '<div class="media-left">';
-          html += '<a class="link-unstyled" href="' + (post.link || post.permalink) + '">';
-          html += '<img class="media-image" ' +
-            'src="' + post.thumbnailImageUrl + '" ' +
-            'width="90" height="90"/>';
-          html += '</a>';
-          html += '</div>';
-        }
-
         html += '<div class="media-body">';
         html += '<a class="link-unstyled" href="' + (post.link || post.permalink) + '">';
         html += '<h3 class="media-heading">' + post.title + '</h3>';

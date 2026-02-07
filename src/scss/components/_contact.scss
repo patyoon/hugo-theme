@@ -4,8 +4,8 @@
     text-align: center;
     border-radius: 10px;
     font-family: map-get($font-families, 'caption');
-    padding-top: 10px;
-    margin-top:20px;
+    padding: 20px 0;
+    margin-top: 20px;
 
     form {
         width: 80%;
@@ -16,47 +16,50 @@
             align-items: center;
             padding-bottom: 1em;
 
-            input {
-                border-radius: 5px 5px 5px 5px;
-                padding: .75rem 0 .75rem 1rem;
-                margin: 5px;
-                font-family: inherit;
-                letter-spacing: 1px;
-                color: #737373;
-                background: #FDFCFB;
-                width: 100%;
-
-                :focus {
-                    outline: none;
-                    outline: 2px solid #E86C8D;
-                    box-shadow: 0 0 2px #E86C8D;
-                }
-            }
+            input,
             textarea {
                 width: 100%;
                 background: #FDFCFB;
                 font-family: inherit;
                 color: #737373;
                 letter-spacing: 1px;
-                border-radius: 5px 5px 5px 5px;
-                padding: 1.5rem 0 .75rem 1rem;
+                border: none;
+                border-radius: 5px;
+                padding: .75rem 1rem;
+                font-size: 14px;
+                box-sizing: border-box;
+
+                &:focus {
+                    outline: 2px solid #E86C8D;
+                    box-shadow: 0 0 2px #E86C8D;
+                }
+
+                &::placeholder {
+                    color: #aaa;
+                }
             }
 
+            textarea {
+                padding-top: 1rem;
+                line-height: 1.5;
+                min-height: 150px;
+            }
         }
 
         .emsg { color: #c12020; font-weight: bold; }
     }
 
     #member_submit {
-        width: 105%;
+        width: 100%;
         height: 46px;
         font-size: 14px;
         background: #2e8bc0;
         font-family: inherit;
         font-weight: bold;
-        color: inherit;
+        color: #FDFCFB;
         letter-spacing: 1px;
-        border-radius: 5px 5px 5px 5px;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
         transition: background .3s ease-in-out;
     }
@@ -64,5 +67,4 @@
     #member_submit:hover {
         background: #d45d7d;
     }
-
 }

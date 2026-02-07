@@ -19,13 +19,6 @@
           {{ $posts := (where $.Site.RegularPages "Section" "post") }}
           {{ range first 10 $posts }}
             <div class="media">
-              {{ if .Params.thumbnailImageUrl }}
-                <div class="media-left">
-                  <a class="link-unstyled" href="{{ .Permalink }}">
-                    <img class="media-image" src="{{ .Params.thumbnailImageUrl }}" width="90" height="90"/>
-                  </a>
-                </div>
-              {{ end }}
               <div class="media-body">
                 <a class="link-unstyled" href="{{ .Permalink }}">
                   <h3 class="media-heading">{{ .Title }}</h3>
@@ -35,7 +28,7 @@
                     {{ .Date.Format "Jan 1, 2006" }}
                   </span>
                 </span>
-                <div class="media-content hide-xs font-merryweather">{{ .Summary }}</div>
+                <div class="media-content hide-xs font-merryweather">{{ .Summary | plainify | truncate 150 }}</div>
               </div>
               <div style="clear:both;"></div>
               <hr>
