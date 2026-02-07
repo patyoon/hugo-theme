@@ -1,18 +1,16 @@
-<script async src="https://www.google.com/recaptcha/api.js?render=6LdG0n0hAAAAAGI740Voq8YqSp0LEDzNepZIHoSd">
-</script>
-
 <div id="subscribe-form" class="subscribe-form">
-  <form id="subscribe-form" method="post" action="" name="subscribe-form" >
+  <form id="subscribe-form" method="POST" action="/page/subscribed/" name="subscribe" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="subscribe" />
+    <input type="hidden" name="bot-field" />
     <div class="subscribe-header">
       Subscribe to newsletter
     </div>
     <div class="subscribe-description">
-      Receive updates and insights, right in your mailbox.<br/> No spam. Unsubscribe anytime.</p>
+      Receive updates and insights, right in your mailbox.<br/> No spam. Unsubscribe anytime.
     </div>
     <div class="subscribe-input">
       <input type="email" class="button" name="email" id="member_email" placeholder="Your email address" required>
-      <input type="submit" class="button" name="subscribe" id="member_submit" value="Subscribe">
+      <input type="submit" class="button" name="subscribe-btn" id="member_submit" value="Subscribe">
     </div>
-    <div id="cnumber" class="emsg"></div>
   </form>
 </div>
