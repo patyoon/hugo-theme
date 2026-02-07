@@ -6,46 +6,49 @@
     font-family: map-get($font-families, 'caption');
     padding: 30px 0;
     margin-top: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 
-    form {
-        width: 90%;
-        margin: 0 auto;
+    .contact-input {
+        padding-bottom: 0;
+        margin: 0 16px;
 
-        .contact-input {
-            padding-bottom: 1em;
+        &:last-of-type {
+            padding-bottom: 0;
+        }
 
-            input,
-            textarea {
-                width: 100%;
-                background: #FDFCFB;
-                font-family: inherit;
-                color: #737373;
-                letter-spacing: 1px;
-                border: none;
-                border-radius: 8px;
-                padding: 12px 16px;
-                font-size: 15px;
-                box-sizing: border-box;
+        input,
+        textarea {
+            width: 100%;
+            background: #FDFCFB;
+            font-family: inherit;
+            color: #737373;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 15px;
+            box-sizing: border-box;
 
-                &:focus {
-                    outline: 2px solid #E86C8D;
-                    box-shadow: 0 0 2px #E86C8D;
-                }
-
-                &::placeholder {
-                    color: #aaa;
-                }
+            &:focus {
+                outline: 2px solid #E86C8D;
+                box-shadow: 0 0 2px #E86C8D;
             }
 
-            textarea {
-                padding-top: 12px;
-                line-height: 1.5;
-                min-height: 180px;
+            &::placeholder {
+                color: #aaa;
             }
         }
 
-        .emsg { color: #c12020; font-weight: bold; }
+        textarea {
+            padding-top: 12px;
+            line-height: 1.5;
+            min-height: 270px;
+        }
     }
+
+    .emsg { color: #c12020; font-weight: bold; }
 
     #member_submit {
         width: 100%;
@@ -59,7 +62,7 @@
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        margin: 5px 0 10px;
+        margin: 5px 0 0;
         transition: background .3s ease-in-out;
     }
 
