@@ -13,7 +13,7 @@
             class="form-control input--large search-input" placeholder="{{ i18n "global.search" }}" />
         </form>
       </div>
-      <div class="modal-bo  dy">
+      <div class="modal-body">
         <div class="no-result text-color-light text-center">{{ i18n "global.posts_found.zero" }}</div>
         <div class="results">
           {{ $posts := (where .Site.RegularPages "Section" "post") }}
