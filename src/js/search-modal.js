@@ -132,10 +132,14 @@
         html += '</a>';
         html += '<span class="media-meta">';
         html += '<span class="media-date text-small">';
-        html += moment(post.date).locale(lang).format('ll');
+        html += moment.unix(post.date).locale(lang).format('ll');
         html += '</span>';
         html += '</span>';
-        html += '<div class="media-content hide-xs font-merryweather">' + post.excerpt + '</div>';
+        var summaryText = (post.summary || '').replace(/<[^>]*>/g, '');
+        if (summaryText.length > 150) {
+          summaryText = summaryText.substring(0, 150) + '…';
+        }
+        html += '<div class="media-content hide-xs font-merryweather">' + summaryText + '</div>';
         html += '</div>';
         html += '<div style="clear:both;"></div>';
         html += '<hr>';
