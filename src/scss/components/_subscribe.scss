@@ -31,26 +31,31 @@
             align-items: center;
             padding-bottom: 2em;
 
+            #member_email,
+            #member_submit {
+                -webkit-appearance: none;
+                appearance: none;
+                height: 44px;
+                border: none;
+                font-size: 16px;
+                font-family: inherit;
+                letter-spacing: 1px;
+                box-sizing: border-box;
+            }
+
             #member_email {
                 width: 65%;
-                font-size: 14px;
                 background: #FDFCFB;
-                font-family: inherit;
                 color: #737373;
-                letter-spacing: 1px;
-                text-indent: 5%;
+                padding: 0 12px;
                 border-radius: 5px 0 0 5px;
             }
 
             #member_submit {
                 width: 35%;
-                height: 46px;
-                font-size: 14px;
                 background: #2e8bc0;
-                font-family: inherit;
                 font-weight: bold;
                 color: inherit;
-                letter-spacing: 1px;
                 border-radius: 0 5px 5px 0;
                 border-left: 2px solid #0c2d48;
                 cursor: pointer;
@@ -62,15 +67,8 @@
             }
 
             input:focus {
-                outline: none;
                 outline: 2px solid #E86C8D;
                 box-shadow: 0 0 2px #E86C8D;
-            }
-
-            #member_email,
-            #member_submit {
-                height: 44px;
-                border: none;
             }
         }
     }
