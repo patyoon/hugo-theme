@@ -39,7 +39,11 @@
   {{ end }}
 {{ end }}
 
+{{ if or .Params.coverImage .Params.thumbnailImage }}
+<meta name="twitter:card" content="summary_large_image">
+{{ else }}
 <meta name="twitter:card" content="summary">
+{{ end }}
 {{ with .Site.Params.Author.twitter }}
   <meta name="twitter:site" content="@{{ . }}">
 {{ end }}
@@ -82,4 +86,22 @@
 {{ end }}
 {{ if .Params.noindex }}
   <meta name="robots" content="noindex" />
+{{ end }}
+
+{{ if .IsTranslated }}
+  {{ range .Translations }}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+  {{ end }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ end }}
+
+{{ if and .IsPage (eq .Type "post") }}
+{{ $desc := .Summary | plainify | truncate 160 | htmlUnescape }}
+{{ with .Description }}{{ $desc = . }}{{ end }}
+{{ $ld := dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "url" .Permalink "datePublished" (.PublishDate.Format "2006-01-02T15:04:05-07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00") "description" $desc "author" (dict "@type" "Person" "name" .Site.Params.Author.name "url" (.Site.BaseURL | string)) "publisher" (dict "@type" "Person" "name" .Site.Params.Author.name) }}
+{{ with .Params.coverImage }}{{ $ld = merge $ld (dict "image" (. | absURL | string)) }}{{ end }}
+{{ $jsonLD := $ld | jsonify (dict "indent" "  ") }}
+<script type="application/ld+json">
+{{ $jsonLD | safeJS }}
+</script>
 {{ end }}
