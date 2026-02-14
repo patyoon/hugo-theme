@@ -1,4 +1,4 @@
-<div class="post-header main-content-wrap {{ if $.Params.metaalignment }}text-{{ $.Params.metaalignment }}{{ else }}text-left{{ end }}">
+<div class="post-header {{ if $.Params.metaalignment }}text-{{ $.Params.metaalignment }}{{ else }}text-left{{ end }}">
   {{ if not (eq .Params.showTitle false) }}
     {{ with $.Params.link }}
       <h1 itemprop="headline">

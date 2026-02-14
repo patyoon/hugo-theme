@@ -1,19 +1,13 @@
-// Post body wrapper - flex container for TOC + content
-.post-body {
-  display: flex;
-  flex-direction: column;
-}
-
-// TOC sidebar
+// TOC sidebar - sits inside .main-content-wrap
 .toc-sidebar {
   position: static;
   background: map-get($main, 'background-color');
-  padding: 12px 20px 12px 30px;
+  padding: 12px 0;
+  margin-bottom: 15px;
   border-bottom: 1px solid $color-gray-border;
   font-family: $open-sans-sans-serif;
   font-size: map-get($font-size, small);
   line-height: 1.6;
-  overflow-y: visible;
 
   .toc-header {
     display: flex;
@@ -86,29 +80,33 @@
   }
 }
 
-// Desktop: two-column layout, TOC flush against content
+// Desktop: CSS Grid two-column layout when TOC is present
 @media #{$xlarge-and-up} {
-  .post-body {
-    flex-direction: row;
-    // Center the combined TOC + content as a single block
-    max-width: calc(200px + 15px + #{$main-width});
-    margin: 0 auto;
+  .post-content {
+    overflow: visible;
   }
 
+  .main-content-wrap.has-toc {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 20px;
+    max-width: calc(200px + 20px + #{map-get($main-content, max-width)});
+  }
+
+  // TOC spans the full left column
   .toc-sidebar {
-    order: -1;
-    width: 200px;
-    min-width: 200px;
-    flex-shrink: 0;
+    grid-column: 1;
+    grid-row: 1 / span 999;
     position: sticky;
     top: 70px;
-    align-self: flex-start;
+    align-self: start;
     max-height: calc(100vh - 80px);
+    overflow-y: auto;
     background: transparent;
     border-bottom: none;
     border-right: 1px solid $color-gray-border;
-    padding: 0 15px;
-    margin-right: 0;
+    padding: 0 15px 0 0;
+    margin-bottom: 0;
 
     .toc-header {
       cursor: default;
@@ -136,13 +134,8 @@
     }
   }
 
-  .post-body .post-content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  // Left-align content within its flex cell since .post-body handles centering
-  .post-body .post-content .main-content-wrap {
-    margin-left: 0;
+  // All content elements go to the right column
+  .main-content-wrap.has-toc > *:not(.toc-sidebar) {
+    grid-column: 2;
   }
 }

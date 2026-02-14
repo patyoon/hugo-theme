@@ -6,32 +6,30 @@
       {{ partial "post/header-cover.html" . }}
       <div id="main" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}"
         class="{{ with .Params.coverimage }}hasCover{{ end }}
-               {{ if eq .Params.covermeta "out" }}hasCoverMetaOut{{ else }}hasCoverMetaIn{{ end }}
+               {{ if eq .Params.covermeta "in" }}hasCoverMetaIn{{ else }}hasCoverMetaOut{{ end }}
                {{ with .Params.coverCaption }}hasCoverCaption{{ end }}">
         <article class="post" itemscope itemType="http://schema.org/BlogPosting">
           {{ with .Params.covercaption }}
             <span class="post-header-cover-caption caption">{{ . | markdownify }}</span>
           {{ end }}
-          {{ if or (not .Params.coverimage) (eq .Params.covermeta "out") }}
-            {{ partial "post/header.html" . }}
-          {{ end }}
-          <div class="post-body">
-            {{ if findRE "<li>" .TableOfContents }}
-            <nav class="toc-sidebar" id="toc-sidebar">
-              <div class="toc-header" id="toc-toggle">
-                <span>Contents</span>
-                <span class="toc-toggle-icon">&#9662;</span>
-              </div>
-              <div class="toc-body" id="toc-body">
-                {{ .TableOfContents }}
-              </div>
-            </nav>
-            {{ end }}
-            <div class="post-content markdown" itemprop="articleBody">
-              <div class="main-content-wrap">
-                {{ .Content | safeHTML }}
-                {{ partial "post/gallery.html" . }}
-              </div>
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap{{ if findRE "<li>" .TableOfContents }} has-toc{{ end }}">
+              {{ if or (not .Params.coverimage) (ne .Params.covermeta "in") }}
+                {{ partial "post/header.html" . }}
+              {{ end }}
+              {{ if findRE "<li>" .TableOfContents }}
+              <nav class="toc-sidebar" id="toc-sidebar">
+                <div class="toc-header" id="toc-toggle">
+                  <span>Contents</span>
+                  <span class="toc-toggle-icon">&#9662;</span>
+                </div>
+                <div class="toc-body" id="toc-body">
+                  {{ .TableOfContents }}
+                </div>
+              </nav>
+              {{ end }}
+              {{ .Content | safeHTML }}
+              {{ partial "post/gallery.html" . }}
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -46,7 +44,7 @@
                 {{ end }}
               {{ end }}
             {{ end }}
-            {{ partial "post/actions.html" . }}
+            {{ partial "post/related.html" . }}
             {{ if not (eq .Params.comments false) }}
               {{ if .Site.Config.Services.Disqus.Shortname }}
                 {{ partial "post/disqus.html" . }}
@@ -55,9 +53,6 @@
           </div>
         </article>
         {{ partial "footer.html" . }}
-      </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}">
-        {{ partial "post/actions.html" . }}
       </div>
       {{ partial "post/share-options.html" . }}
     </div>

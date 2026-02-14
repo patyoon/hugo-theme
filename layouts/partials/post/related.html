@@ -1,0 +1,21 @@
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ if $related }}
+<div class="related-posts">
+  <h3>{{ i18n "post.related" | default "Related Posts" }}</h3>
+  <ul class="related-posts-list">
+    {{ range $related }}
+      <li class="related-posts-item">
+        <a href="{{ .RelPermalink }}">
+          {{ if .Params.thumbnailimage }}
+            <img class="related-posts-thumbnail" src="{{ .Params.thumbnailimage | relURL }}" alt="{{ .Title }}" />
+          {{ end }}
+          <div class="related-posts-info">
+            <span class="related-posts-title">{{ .Title }}</span>
+            <time class="related-posts-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $.Site.Params.dateFormat }}</time>
+          </div>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

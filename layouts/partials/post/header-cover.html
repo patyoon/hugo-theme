@@ -4,7 +4,7 @@
               {{ with .Params.coversize }}post-header-cover--{{ . }}{{ end }}"
        style="background-image:url('{{ .Params.coverimage | relURL }}')"
        data-behavior="{{ $.Scratch.Get "sidebarBehavior" }}">
-    {{ if or (eq .Params.covermeta "in") (not .Params.covermeta) }}
+    {{ if eq .Params.covermeta "in" }}
       {{ partial "post/header.html" . }}
     {{ end }}
   </div>
