@@ -138,4 +138,11 @@
   .main-content-wrap.has-toc > *:not(.toc-sidebar) {
     grid-column: 2;
   }
+
+  // Align post-footer, subscribe, and footer with the content column when TOC is present
+  #main.has-article-toc .post-footer.main-content-wrap,
+  #main.has-article-toc > .subscribe.main-content-wrap,
+  #main.has-article-toc > #footer.main-content-wrap {
+    padding-left: calc(#{map-get($main-content, padding-right-left)} + 200px + 20px);
+  }
 }
