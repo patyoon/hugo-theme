@@ -15,10 +15,23 @@
           {{ if or (not .Params.coverimage) (eq .Params.covermeta "out") }}
             {{ partial "post/header.html" . }}
           {{ end }}
-          <div class="post-content markdown" itemprop="articleBody">
-            <div class="main-content-wrap">
-              {{ (replaceRE "<!--\\s*[t|T][o|O][c|C]\\s*-->" (printf "<h1 id=\"table-of-contents\">%s</h1>%s" (i18n "post.toc") .TableOfContents) .Content) | safeHTML }}
-              {{ partial "post/gallery.html" . }}
+          <div class="post-body">
+            {{ if findRE "<li>" .TableOfContents }}
+            <nav class="toc-sidebar" id="toc-sidebar">
+              <div class="toc-header" id="toc-toggle">
+                <span>Contents</span>
+                <span class="toc-toggle-icon">&#9662;</span>
+              </div>
+              <div class="toc-body" id="toc-body">
+                {{ .TableOfContents }}
+              </div>
+            </nav>
+            {{ end }}
+            <div class="post-content markdown" itemprop="articleBody">
+              <div class="main-content-wrap">
+                {{ .Content | safeHTML }}
+                {{ partial "post/gallery.html" . }}
+              </div>
             </div>
           </div>
           <div id="post-footer" class="post-footer main-content-wrap">
@@ -48,4 +61,45 @@
       </div>
       {{ partial "post/share-options.html" . }}
     </div>
+{{ if findRE "<li>" .TableOfContents }}
+<script>
+(function() {
+  var tocSidebar = document.getElementById('toc-sidebar')
+  if (!tocSidebar) return
+
+  // Mobile toggle
+  var tocToggle = document.getElementById('toc-toggle')
+  var tocBody = document.getElementById('toc-body')
+  if (tocToggle && tocBody) {
+    tocToggle.addEventListener('click', function() {
+      tocSidebar.classList.toggle('collapsed')
+    })
+  }
+
+  // Active section highlighting
+  var tocLinks = tocSidebar.querySelectorAll('#TableOfContents a')
+  var headings = []
+
+  tocLinks.forEach(function(link) {
+    var id = decodeURIComponent(link.getAttribute('href').slice(1))
+    var heading = document.getElementById(id)
+    if (heading) headings.push({ element: heading, link: link })
+  })
+
+  if (!headings.length) return
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(l) { l.classList.remove('active') })
+        var match = headings.find(function(h) { return h.element === entry.target })
+        if (match) match.link.classList.add('active')
+      }
+    })
+  }, { rootMargin: '-80px 0px -80% 0px' })
+
+  headings.forEach(function(h) { observer.observe(h.element) })
+})()
+</script>
+{{ end }}
 {{ partial "foot.html" . }}

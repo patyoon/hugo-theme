@@ -1,0 +1,148 @@
+// Post body wrapper - flex container for TOC + content
+.post-body {
+  display: flex;
+  flex-direction: column;
+}
+
+// TOC sidebar
+.toc-sidebar {
+  position: static;
+  background: map-get($main, 'background-color');
+  padding: 12px 20px 12px 30px;
+  border-bottom: 1px solid $color-gray-border;
+  font-family: $open-sans-sans-serif;
+  font-size: map-get($font-size, small);
+  line-height: 1.6;
+  overflow-y: visible;
+
+  .toc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: map-get($font-size, medium);
+    color: $color-base;
+    user-select: none;
+
+    .toc-toggle-icon {
+      transition: transform 0.2s ease;
+      font-size: 1.2rem;
+    }
+  }
+
+  .toc-body {
+    margin-top: 8px;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+    overflow: hidden;
+  }
+
+  // Collapsed state (mobile toggle)
+  &.collapsed {
+    max-height: none;
+    overflow: visible;
+
+    .toc-header .toc-toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .toc-body {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+    }
+  }
+
+  // Hugo-generated TOC nav
+  #TableOfContents {
+    ul {
+      list-style: none;
+      padding-left: 15px;
+      margin: 0;
+    }
+
+    > ul {
+      padding-left: 0;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    a {
+      color: map-get($colors, light);
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: map-get($colors, link);
+      }
+
+      &.active {
+        color: map-get($colors, link);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Desktop: two-column layout, TOC flush against content
+@media #{$xlarge-and-up} {
+  .post-body {
+    flex-direction: row;
+    // Center the combined TOC + content as a single block
+    max-width: calc(200px + 15px + #{$main-width});
+    margin: 0 auto;
+  }
+
+  .toc-sidebar {
+    order: -1;
+    width: 200px;
+    min-width: 200px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+    max-height: calc(100vh - 80px);
+    background: transparent;
+    border-bottom: none;
+    border-right: 1px solid $color-gray-border;
+    padding: 0 15px;
+    margin-right: 0;
+
+    .toc-header {
+      cursor: default;
+
+      .toc-toggle-icon {
+        display: none;
+      }
+    }
+
+    .toc-body {
+      margin-top: 10px;
+    }
+
+    // Never collapse on desktop
+    &.collapsed {
+      .toc-header .toc-toggle-icon {
+        display: none;
+      }
+
+      .toc-body {
+        max-height: none;
+        opacity: 1;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .post-body .post-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  // Left-align content within its flex cell since .post-body handles centering
+  .post-body .post-content .main-content-wrap {
+    margin-left: 0;
+  }
+}
