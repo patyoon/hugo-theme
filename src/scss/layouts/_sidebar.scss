@@ -200,6 +200,38 @@
     }
 }
 
+li.sidebar-button.sidebar-button--blog {
+  height: auto !important;
+  overflow: visible;
+
+  .blog-dropdown-toggle {
+    height: 35px;
+    line-height: 35px;
+  }
+}
+
+.blog-category-dropdown {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  .blog-category-item {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+  }
+}
+
+.blog-dropdown-arrow {
+  font-size: 0.7em;
+  margin-left: 5px;
+  transition: transform 0.2s ease;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
 .lang-nav {
   display: flex;
   align-items: center;

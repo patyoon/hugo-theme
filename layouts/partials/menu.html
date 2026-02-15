@@ -1,13 +1,39 @@
 {{ range .menu }}
-  <li class="sidebar-button">
-    {{ if and (or (in .URL "://") (in .URL "mailto:") (in .URL "tel:") (in .URL "callto:") (in .URL "skype:")) (not (in .URL (printf "%s" $.root.Site.BaseURL))) }}
-      <a class="sidebar-button-link {{ if eq .Identifier "search" }}open-algolia-search{{ end }}" href="{{ .URL | safeURL }}" target="_blank" rel="noopener">
+  <li class="sidebar-button{{ if eq .Identifier "blog" }} sidebar-button--blog{{ end }}">
+    {{ if eq .Identifier "blog" }}
+      <a class="sidebar-button-link blog-dropdown-toggle" href="javascript:void(0)">
+        {{ .Pre }}
+        {{ $name := (i18n (printf "global.%s" .Identifier)) }}
+        <span class="sidebar-button-desc"> {{ if eq (len $name) 0 }}{{ .Name }}{{ else }}{{ $name }}{{ end }}</span>
+        <i class="fas fa-chevron-down blog-dropdown-arrow" aria-hidden="true"></i>
+      </a>
+      <ul class="blog-category-dropdown" style="display:none">
+        {{ range $name, $taxonomy := $.root.Site.Taxonomies.categories }}
+          {{ $publicCount := 0 }}
+          {{ range $taxonomy.Pages }}
+            {{ if and (not .Draft) (ne .Params.private true) }}
+              {{ $publicCount = add $publicCount 1 }}
+            {{ end }}
+          {{ end }}
+          {{ if gt $publicCount 0 }}
+            <li class="sidebar-button blog-category-item">
+              <a class="sidebar-button-link" href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}/">
+                <span class="sidebar-button-desc">{{ $name | title }}</span>
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
     {{ else }}
-      <a class="sidebar-button-link {{ if eq .Identifier "search" }}open-algolia-search{{ end }}" href="{{ .URL | relLangURL }}">
+      {{ if and (or (in .URL "://") (in .URL "mailto:") (in .URL "tel:") (in .URL "callto:") (in .URL "skype:")) (not (in .URL (printf "%s" $.root.Site.BaseURL))) }}
+        <a class="sidebar-button-link {{ if eq .Identifier "search" }}open-algolia-search{{ end }}" href="{{ .URL | safeURL }}" target="_blank" rel="noopener">
+      {{ else }}
+        <a class="sidebar-button-link {{ if eq .Identifier "search" }}open-algolia-search{{ end }}" href="{{ .URL | relLangURL }}">
+      {{ end }}
+        {{ .Pre }}
+        {{ $name := (i18n (printf "global.%s" .Identifier)) }}
+        <span class="sidebar-button-desc"> {{ if eq (len $name) 0 }}{{ .Name }}{{ else }}{{ $name }}{{ end }}</span>
+      </a>
     {{ end }}
-      {{ .Pre }}
-      {{ $name := (i18n (printf "global.%s" .Identifier)) }}
-      <span class="sidebar-button-desc"> {{ if eq (len $name) 0 }}{{ .Name }}{{ else }}{{ $name }}{{ end }}</span>
-    </a>
   </li>
 {{ end }}
